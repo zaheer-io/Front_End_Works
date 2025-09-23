@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="homework.css">
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+            background-color: lightblue;
+            font-weight: bold;
+        }
+        th, td{
+            padding: 10px;
+        }
+        th{
+            text-align: left;
+        }
+        #head{
+            text-align: center;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <table  border="1">
+        <tr><th colspan="6" id="head">time table</th></tr>
+        <tr>
+            <th rowspan="6">Hours</th>
+            <td>Monday</td>
+            <td>Tuesday</td>
+            <td>Wednesday</td>
+            <td>Thursday</td>
+            <td>Friday</td>
+            <tr>
+                <td>science</td>
+                <td>maths</td>
+                <td>science</td>
+                <td>maths</td>
+                <td>arts</td>
+            </tr>
+            <tr>
+                <th colspan="5">lunch</th>
+            </tr>
+            <tr>
+                <td>science</td>
+                <td>maths</td>
+                <td>science</td>
+                <td>maths</td>
+                <td rowspan="2">project</td>
+            </tr>
+            <tr>
+                <td>science</td>
+                <td>maths</td>
+                <td>science</td>
+                <td>maths</td>
+            </tr>
+        </tr>
+    </table>
+</body>
+</html>

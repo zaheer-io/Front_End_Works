@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 2px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+      }
+      table {
+        width: 75%;
+      }
+      .ha {
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>invoice</h1>
+    <table>
+      <tr>
+    <th class="ha">Item/<sub>Desc</sub></th>
+    <th class="ha">Quantity</th>
+    <th class="ha">@</th>
+    <th class="ha">Price</th>
+      </tr>
+      <tr>
+        <td>paperclips<br />(Box)</td>
+        <td>100</td>
+        <td>1.15</td>
+        <td>115.00</td>
+      </tr>
+      <tr>
+        <td>paper<br />(Case)</td>
+        <td>10</td>
+        <td>45.99</td>
+        <td>459.90</td>
+      </tr>
+      <tr>
+        <td>Waste paper<br />Baskets</td>
+        <td>2</td>
+        <td>17.99</td>
+        <td>35.98</td>
+      </tr>
+      <tr>
+        <th class="ha" colspan="3">Subtotal</th>
+        <td>610.88</td>
+      </tr>
+      <tr>
+        <th class="ha" colspan="2">Tax</th>
+        <td>7%</td>
+        <td>42.76</td>
+      </tr>
+      <tr>
+        <th class="ha" colspan="3">Total</th>
+        <td>653.64</td>
+      </tr>
+    </table>
+  </body>
+</html>
