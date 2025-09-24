@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FS2</title>
+    <style>
+        .main{
+            border: 2px solid black;
+            width: 500px;
+            height: 500px;
+        }
+        .child{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid red;
+            height: 100px;
+            width: 100px;
+        }
+        #first{
+            margin-left: 200px;
+            margin-top: 20px;
+        }
+        #second{
+            margin-top: 100px;
+            margin-left: 20px;
+        }
+        #third{
+            margin-left: 380px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="child" id="first">one</div>
+        <div class="child" id="second">two</div>
+        <div class="child" id="third">three</div>
+    </div>
+</body>
+</html>

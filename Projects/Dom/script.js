@@ -17,3 +17,6 @@ btn2.addEventListener("click", () => {
 btn3.addEventListener("click", () =>{
     head.style.color = "blue";
 });
+
+
+console.log("Hello");
