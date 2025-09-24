@@ -167,9 +167,15 @@ const students = [
   { name: "Charlie", scores: { math: 95, english: 85, science: 90 } }
 ];
 
-const studentmark = students.map(student => {
-    obj = {
-        'name' : student.name,
-        'avgScore' : student.score.reduc(a , b => a + b)
-    }
+const studentmak = students.map(student => {
+  const average = Object.values(student.scores).reduce((first, second) => first + second, 0) / Object.values(student.scores).length;
+  // console.log(average);
+  
+  obj = {
+    'name' : student.name,
+    'avgscore' : average
+  }
+  return obj;
 })
+
+console.log(studentmak);
