@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text and Font</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .container .main{
+            border: 2px solid blue;
+            width: 400px;
+            border-radius: 10px;
+            padding: 10px;
+            margin: auto;
+        }
+        .main h1{
+            color: red;
+            text-align: center;
+            font-size: 28px;
+            text-shadow: 2px 2px green;
+        }
+        .main h1:hover{
+            color: black;
+        }
+
+        .main p{
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.5;
+            word-spacing: 2px;
+            text-indent: 100px;
+        }
+        .main span{
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .main button{
+            color: white;
+            height: 50px;
+            width: 125px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            background: url(star.jpg);
+            background-repeat: no-repeat center;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .main button:hover{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <h1 id="head">My heading</h1>
+            <p>The oldest classical British and Latin writings had little or no space between words and could be written in boustrophedon (alternating directions). Over time, text direction (left to right) became standardized. Word dividers and terminal punctuation became common. The first way to divide sentences into groups was the original paragraphos, <span>similar to an underscore at the beginning of the new group.</span></p>
+            <i class="fa-solid fa-angles-right"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+            <button id="btn">Clck  <i class="fa-solid fa-angles-right"></i></button>
+        </div>
+    </div>
+
+    <script>
+        let btn = document.getElementById('btn');
+        let heading = document.getElementById('head');
+        btn.addEventListener('click', () =>{
+            heading.innerHTML = "Zaheer R"
+            heading.style.color = "blue"
+        })
+    </script>
+</body>
+</html>
