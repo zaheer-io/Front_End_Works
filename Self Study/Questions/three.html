@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple calulator </title>
+</head>
+<body>
+    <div>
+        <input type="number" name="" id="first">
+        <input type="number" name="" id="second">
+        <input type="number" name="" id="third">
+
+        <button id="btn">Click</button>
+    </div>
+    <script>
+        let btn = document.getElementById('btn');
+
+        btn.addEventListener('click', () => {
+            let f = parseFloat(document.getElementById('first').value) || 0;
+            let s = parseFloat(document.getElementById('second').value) || 0;
+            
+            let sum = f + s;
+            document.getElementById('third').value = sum;
+            alert(sum)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Task 2</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            width: 900px;
+            padding: 30px 0 30px 0;
+            background-color: rgb(45, 42, 42);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+        .child{
+            height: 500px;
+            width: 270px;
+            background-color: white;
+            display: grid;
+            grid-template-rows: 1fr 2fr 3fr;
+        }
+        .name{
+            text-align: center;
+        }
+        .details h4{
+            text-align: center;
+            font-weight: normal;
+            font-size: 18px;
+        }
+        .details span{
+            font-weight: bold;
+        }
+        .first .image{
+            background: url('car1.jpg') no-repeat;
+            background-size: cover;
+            height: 200px;
+        }
+        .second .image{
+            background: url('car2.jpg') no-repeat;
+            background-size: cover;
+            height: 200px;
+        }
+        .third .image{
+            background: url('car3.jpg') no-repeat;
+            background-size: cover;
+            height: 200px;
+        }
+        .first .name{
+            background-color: rgb(100, 101, 106);
+            color: white;
+            font-weight: bold;
+        }
+        .second .name{
+            color: white;
+            background-color: red;
+            font-weight: bold;
+        }
+        .third .name{
+            color: white;
+            background-color: rgb(100, 101, 106);
+            font-weight: bold;
+        }
+        .btn{
+            cursor: pointer;
+            background-color: red;
+            height: 20px;
+            border: none;
+            height: 34px;
+            width: 120px;
+            margin-left: 80px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+        .custom-list{
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 30px
+        }
+        .custom-list li{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .custom-list li i{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="child first">
+            <div class="name"><h3>LEMBO</h3></div>
+            <div class="image"></div>
+            <div class="details">
+                <H4>Starting at <span>$28,154</span></H4>
+                <ul class="custom-list">
+                    <li> <i class="fa-solid fa-bookmark"></i>5/7 seats</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>Seatbelt</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>4 Wheel Drive</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>Comfort seats</li>
+                </ul>
+                <button class="btn">LEARN MORE</button>
+            </div>
+        </div>
+        <div class="child second">
+            <div class="name"><h3>BMW</h3></div>
+            <div class="image"></div>
+            <div class="details">
+                <h4>Starting at <span>$28,154</span></h4>
+                <ul class="custom-list">
+                    <li> <i class="fa-solid fa-bookmark"></i>5/7 seats</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>Seatbelt</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>4 Wheel Drive</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>Comfort seats</li>
+                </ul>
+                <button class="btn">LEARN MORE</button>
+            </div>
+        </div>
+        <div class="child third">
+            <div class="name"><h3>PORSCHE</h3></div>
+            <div class="image"></div>
+            <div class="details">
+                <h4>Starting at <span>$28,154</span></h4>
+                <ul class="custom-list">
+                    <li> <i class="fa-solid fa-bookmark"></i>5/7 seats</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>Seatbelt</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>4 Wheel Drive</li>
+                    <li> <i class="fa-solid fa-bookmark"></i>Comfort seats</li>
+                </ul>
+                <button class="btn">LEARN MORE</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

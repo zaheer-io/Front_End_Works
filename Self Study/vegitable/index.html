@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VegShop Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab.active {
+            background: white;
+            color: #4CAF50;
+            border-bottom: 3px solid #4CAF50;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            min-height: 400px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Product Management Styles */
+        .add-product-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: #333;
+            padding: 8px 16px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .btn-edit:hover {
+            background: #e0a800;
+        }
+
+        .product-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .product-price-gram {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Calculator Styles */
+        .calculator-section {
+            margin-bottom: 20px;
+        }
+
+        .calculator-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .cart-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .cart-item-details {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 2px;
+        }
+
+        .cart-item-price {
+            font-weight: 600;
+            color: #4CAF50;
+            font-size: 16px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .total-section {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .total-amount {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #6c757d;
+            padding: 40px 20px;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Edit form styles */
+        .edit-form {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .edit-form h4 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 15px;
+            }
+
+            .tab-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥬 VegShop Manager</h1>
+            <p>Manage your vegetable inventory & calculate bills</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('manage')">
+                📦 Manage Products
+            </button>
+            <button class="nav-tab" onclick="switchTab('calculator')">
+                🧮 Calculate Bill
+            </button>
+        </div>
+
+        <!-- Manage Products Tab -->
+        <div id="manage" class="tab-content active">
+            <div class="add-product-form">
+                <h3 style="margin-bottom: 15px; color: #333;">Add New Product</h3>
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" placeholder="e.g., Tomatoes, Onions">
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price per KG (₹)</label>
+                    <input type="number" id="productPrice" step="0.01" placeholder="e.g., 25.50">
+                </div>
+                <button class="btn btn-primary" onclick="addProduct()">Add Product</button>
+            </div>
+
+            <div id="productsList">
+                <!-- Products will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Calculator Tab -->
+        <div id="calculator" class="tab-content">
+            <div class="calculator-form">
+                <h3 style="margin-bottom: 15px; color: #333;">Add Item to Bill</h3>
+
+                <div class="form-group">
+                    <label for="productSearch">Search Products</label>
+                    <input type="text" id="productSearch" class="search-box" placeholder="Search products..." onkeyup="filterProducts()">
+                </div>
+
+                <div class="form-group">
+                    <label for="productSelect">Select Product</label>
+                    <select id="productSelect">
+                        <option value="">Choose a product...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="productWeight">Weight (grams)</label>
+                    <input type="number" id="productWeight" placeholder="e.g., 500" oninput="calculateItemPrice()">
+                </div>
+
+                <div id="itemPreview" style="display: none; background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <strong>Item Preview:</strong>
+                    <div id="previewText"></div>
+                </div>
+
+                <button class="btn btn-primary" onclick="addToCart()">Add to Bill</button>
+            </div>
+
+            <div id="cartItems">
+                <!-- Cart items will be displayed here -->
+            </div>
+
+            <div id="totalSection" class="total-section" style="display: none;">
+                <h3>Total Bill</h3>
+                <div class="total-amount">₹<span id="totalAmount">0.00</span></div>
+                <button class="btn" style="background: white; color: #4CAF50; margin-top: 15px;" onclick="clearCart()">Clear All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let products = [];
+        let cart = [];
+        let editingProductId = null;
+
+        // Load data on page load
+        window.onload = function() {
+            loadProducts();
+            loadCart();
+            updateProductSelect();
+            displayProducts();
+            displayCart();
+        };
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+
+            // Update product select when switching to calculator
+            if (tabName === 'calculator') {
+                updateProductSelect();
+            }
+        }
+
+        // Local Storage functions
+        function saveProducts() {
+            localStorage.setItem('vegshop_products', JSON.stringify(products));
+        }
+
+        function loadProducts() {
+            const saved = localStorage.getItem('vegshop_products');
+            if (saved) {
+                products = JSON.parse(saved);
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('vegshop_cart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+            const saved = localStorage.getItem('vegshop_cart');
+            if (saved) {
+                cart = JSON.parse(saved);
+            }
+        }
+
+        // Product Management Functions
+        function addProduct() {
+            const name = document.getElementById('productName').value.trim();
+            const price = parseFloat(document.getElementById('productPrice').value);
+
+            if (!name) {
+                alert('Please enter product name');
+                return;
+            }
+
+            if (!price || price <= 0) {
+                alert('Please enter valid price');
+                return;
+            }
+
+            // Check if product already exists
+            if (products.some(p => p.name.toLowerCase() === name.toLowerCase())) {
+                alert('Product already exists!');
+                return;
+            }
+
+            const product = {
+                id: Date.now(),
+                name: name,
+                pricePerKg: price,
+                pricePerGram: (price / 1000).toFixed(4)
+            };
+
+            products.push(product);
+            saveProducts();
+            displayProducts();
+            updateProductSelect();
+
+            // Clear form
+            document.getElementById('productName').value = '';
+            document.getElementById('productPrice').value = '';
+        }
+
+        function displayProducts() {
+            const container = document.getElementById('productsList');
+
+            if (products.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No Products Added</h3>
+                        <p>Add your first product to get started!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = products.map(product => `
+                <div class="product-card" id="product-${product.id}">
+                    ${editingProductId === product.id ? `
+                        <div class="edit-form">
+                            <h4>Edit Product</h4>
+                            <div class="form-group">
+                                <input type="text" id="edit-name-${product.id}" value="${product.name}" style="margin-bottom: 10px;">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="edit-price-${product.id}" value="${product.pricePerKg}" step="0.01" style="margin-bottom: 10px;">
+                            </div>
+                            <button class="btn btn-primary" onclick="saveEdit(${product.id})" style="margin-right: 10px;">Save</button>
+                            <button class="btn" onclick="cancelEdit()" style="background: #6c757d; color: white;">Cancel</button>
+                        </div>
+                    ` : `
+                        <div class="product-header">
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-price">₹${product.pricePerKg}/kg</div>
+                        </div>
+                        <div class="product-price-gram">₹${product.pricePerGram}/gram</div>
+                        <div class="product-actions">
+                            <button class="btn btn-edit" onclick="editProduct(${product.id})">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                        </div>
+                    `}
+                </div>
+            `).join('');
+        }
+
+        function editProduct(id) {
+            editingProductId = id;
+            displayProducts();
+        }
+
+        function saveEdit(id) {
+            const name = document.getElementById(`edit-name-${id}`).value.trim();
+            const price = parseFloat(document.getElementById(`edit-price-${id}`).value);
+
+            if (!name || !price || price <= 0) {
+                alert('Please enter valid name and price');
+                return;
+            }
+
+            const productIndex = products.findIndex(p => p.id === id);
+            if (productIndex !== -1) {
+                products[productIndex].name = name;
+                products[productIndex].pricePerKg = price;
+                products[productIndex].pricePerGram = (price / 1000).toFixed(4);
+
+                saveProducts();
+                editingProductId = null;
+                displayProducts();
+                updateProductSelect();
+            }
+        }
+
+        function cancelEdit() {
+            editingProductId = null;
+            displayProducts();
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                products = products.filter(p => p.id !== id);
+                saveProducts();
+                displayProducts();
+                updateProductSelect();
+
+                // Remove from cart if exists
+                cart = cart.filter(item => item.productId !== id);
+                saveCart();
+                displayCart();
+            }
+        }
+
+        // Calculator Functions
+        function updateProductSelect() {
+            const select = document.getElementById('productSelect');
+            select.innerHTML = '<option value="">Choose a product...</option>';
+
+            products.forEach(product => {
+                select.innerHTML += `<option value="${product.id}">${product.name} (₹${product.pricePerKg}/kg)</option>`;
+            });
+        }
+
+        function filterProducts() {
+            const searchTerm = document.getElementById('productSearch').value.toLowerCase();
+            const select = document.getElementById('productSelect');
+
+            select.innerHTML = '<option value="">Choose a product...</option>';
+
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm)
+            );
+
+            filteredProducts.forEach(product => {
+                select.innerHTML += `<option value="${product.id}">${product.name} (₹${product.pricePerKg}/kg)</option>`;
+            });
+        }
+
+        function calculateItemPrice() {
+            const productId = document.getElementById('productSelect').value;
+            const weight = parseFloat(document.getElementById('productWeight').value);
+
+            if (productId && weight > 0) {
+                const product = products.find(p => p.id == productId);
+                if (product) {
+                    const totalPrice = (product.pricePerKg * weight / 1000).toFixed(2);
+                    document.getElementById('itemPreview').style.display = 'block';
+                    document.getElementById('previewText').innerHTML = `
+                        ${product.name} - ${weight}g = ₹${totalPrice}
+                    `;
+                } else {
+                    document.getElementById('itemPreview').style.display = 'none';
+                }
+            } else {
+                document.getElementById('itemPreview').style.display = 'none';
+            }
+        }
+
+        // Add event listener for product selection
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('productSelect').addEventListener('change', calculateItemPrice);
+        });
+
+        function addToCart() {
+            const productId = document.getElementById('productSelect').value;
+            const weight = parseFloat(document.getElementById('productWeight').value);
+
+            if (!productId) {
+                alert('Please select a product');
+                return;
+            }
+
+            if (!weight || weight <= 0) {
+                alert('Please enter valid weight');
+                return;
+            }
+
+            const product = products.find(p => p.id == productId);
+            if (!product) {
+                alert('Product not found');
+                return;
+            }
+
+            const cartItem = {
+                id: Date.now(),
+                productId: product.id,
+                productName: product.name,
+                weight: weight,
+                pricePerKg: product.pricePerKg,
+                totalPrice: (product.pricePerKg * weight / 1000).toFixed(2)
+            };
+
+            cart.push(cartItem);
+            saveCart();
+            displayCart();
+
+            // Clear form
+            document.getElementById('productSelect').value = '';
+            document.getElementById('productWeight').value = '';
+            document.getElementById('productSearch').value = '';
+            document.getElementById('itemPreview').style.display = 'none';
+            updateProductSelect();
+        }
+
+        function displayCart() {
+            const container = document.getElementById('cartItems');
+            const totalSection = document.getElementById('totalSection');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No Items in Bill</h3>
+                        <p>Add products to start calculating!</p>
+                    </div>
+                `;
+                totalSection.style.display = 'none';
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.productName}</div>
+                        <div class="cart-item-details">${item.weight}g × ₹${item.pricePerKg}/kg</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="cart-item-price">₹${item.totalPrice}</div>
+                        <div class="cart-item-actions">
+                            <button class="btn btn-edit" onclick="editCartItem(${item.id})" style="padding: 4px 8px; font-size: 12px;">Edit</button>
+                            <button class="btn btn-danger" onclick="removeFromCart(${item.id})" style="padding: 4px 8px; font-size: 12px;">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Calculate and display total
+            const total = cart.reduce((sum, item) => sum + parseFloat(item.totalPrice), 0);
+            document.getElementById('totalAmount').textContent = total.toFixed(2);
+            totalSection.style.display = 'block';
+        }
+
+        function editCartItem(id) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+
+            const newWeight = prompt(`Edit weight for ${item.productName} (current: ${item.weight}g):`, item.weight);
+            if (newWeight && parseFloat(newWeight) > 0) {
+                item.weight = parseFloat(newWeight);
+                item.totalPrice = (item.pricePerKg * item.weight / 1000).toFixed(2);
+                saveCart();
+                displayCart();
+            }
+        }
+
+        function removeFromCart(id) {
+            if (confirm('Remove this item from the bill?')) {
+                cart = cart.filter(item => item.id !== id);
+                saveCart();
+                displayCart();
+            }
+        }
+
+        function clearCart() {
+            if (confirm('Clear all items from the bill?')) {
+                cart = [];
+                saveCart();
+                displayCart();
+            }
+        }
+    </script>
+</body>
+</html>

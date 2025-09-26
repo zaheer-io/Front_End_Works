@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="name">
+    <h2 id="greet">Greeting Message</h2>
+    <button id="btn">Click Here</button>
+
+    <script>
+        btn = document.getElementById('btn');
+
+        btn.addEventListener('click', () => {
+            let name = document.getElementById('name').value;
+            let greet= document.getElementById('greet');
+
+            greet.innerHTML = "Hello " + name + "!";
+        })
+    </script>
+</body>
+</html>
