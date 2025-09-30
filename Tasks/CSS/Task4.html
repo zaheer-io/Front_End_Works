@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>div arrangement</title>
+    <style>
+        .head{
+            background-color: yellow;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 0 10px 20px 10px;
+
+        }
+        .body{
+            margin: 0 10px 0 10px;
+            position: relative;
+        }
+        .menu{
+            width: 200px;
+            height: 120px;
+            position: absolute;
+
+        }
+        .content{
+            border-left: 4px solid green;
+            width: 850px;
+            height: 500px;
+            padding-left: 10px;
+            position: absolute;
+            left: 220px;
+        }
+        .post{
+            border: 2px dotted black;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            left: 1150px;
+        }
+        .footer{
+            position: absolute;
+            top: 575px;
+            left:600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="head">My blog About My life</div>
+        <div class="body">
+            <div class="menu">
+                <h3>Menu</h3>
+                <a href="">Today</a> <br>
+                <a href="">Yesterdayy</a> <br>
+                <a href="">Last Weak</a> <br>
+                <a href="">Archive</a>
+            </div>
+            <div class="content">
+                <h3>Meeting with Supervisor</h3>
+                <p>14 DEC 2011</p>
+                <h3>Meeting with Supervisor</h3>
+                <p>14 DEC 2011</p>
+                <h3>Meeting with Supervisor</h3>
+                <p>14 DEC 2011</p>
+                <h3>Meeting with Supervisor</h3>
+                <p>14 DEC 2011</p>
+                <h3>Visit Parents</h3>
+                <p>14 DEC 2011</p>
+                <h3>Buy Lembo</h3>
+                <p>14 DEC 2011</p>
+            </div>
+            <div class="post">
+                <h3>Last Posts</h3>
+                <a href="">Menu First</a> <br>
+                <a href="">Menu First</a> <br>
+                <a href="">Menu First</a> <br>
+            </div>
+            <div class="footer">
+                Contact Me <a href="">eamil@gamil.com</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
